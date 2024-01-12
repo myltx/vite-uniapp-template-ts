@@ -1,5 +1,5 @@
-import permission from './permission/index.js'
-import realname from './realname/index.js'
+import permission from './permission/index'
+import realname from './realname/index'
 
 import { defineMiddleware } from '$uni-router/middleware'
 

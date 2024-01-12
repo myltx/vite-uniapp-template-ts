@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { getToken, removeToken, setToken } from '@/utils/token.js'
-import { getUserInfo, userLogin } from '@/api/user/index.js'
+import { getToken, removeToken, setToken } from '@/utils/token'
+import { getUserInfo, userLogin } from '@/api/user/index'
 import defaultAvatar from '@/static/avatar.png'
 import router from '@/router'
 

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import * as dicts from '@/configs/dict/index.js'
+import * as dicts from '@/configs/dict/index'
 
 export default {
   components: {},

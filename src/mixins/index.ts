@@ -1,4 +1,4 @@
-import share from './share/index.js'
+import share from './share/index'
 
 export default {
   install(app) {

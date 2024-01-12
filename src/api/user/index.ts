@@ -1,4 +1,4 @@
-import { mock } from '../base/index.js'
+import { mock } from '../base/index'
 
 /**
  * @description 用户登录

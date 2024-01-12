@@ -29,19 +29,12 @@
   </view>
 </template>
 
-<script>
-import { enterpriseInfo } from '@/configs/index.js'
+<script setup lang="ts">
+import { enterpriseInfo } from '@/configs/index'
 import wechatImage from '@/assets/image-wechat.png'
 
-export default {
-  data() {
-    return {
-      wechatImage,
-      enterpriseInfo,
-    }
-  },
-  computed: {},
-  methods: {},
+const handleCopy = (val) => {
+  console.log(val)
 }
 </script>
 

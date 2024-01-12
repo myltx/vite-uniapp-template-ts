@@ -1,5 +1,5 @@
-import request from '@/utils/request/index.js'
-import { baseURL, responseSuccessCode } from '@/configs/request.js'
+import request from '@/utils/request/index'
+import { baseURL, responseSuccessCode } from '@/configs/request'
 
 /**
  * @description 模拟接口

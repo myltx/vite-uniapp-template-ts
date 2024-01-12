@@ -1,8 +1,8 @@
 import * as Pinia from 'pinia'
-import { useAppStore } from './app/index.js'
-import { useMenuStore } from './menu/index.js'
-import { useUserStore } from './user/index.js'
-import { useDictStore } from './dict/index.js'
+import { useAppStore } from './app/index'
+import { useMenuStore } from './menu/index'
+import { useUserStore } from './user/index'
+import { useDictStore } from './dict/index'
 
 export default {
   install(app) {

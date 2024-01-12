@@ -24,29 +24,24 @@
   </view>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      exampleModel: [
-        {
-          icon: 'm-luyou',
-          iconClass: '',
-          text: '路由中间件',
-          desc: '进入此页面将触发实名认证路由中间件演示',
-          route: {
-            path: '/pages/middleware/index',
-          },
-        },
-      ],
-    }
-  },
-  created() {},
-  methods: {
-    handleInfo(row) {
-      this.$Router.push(row.route)
+<script setup lang="ts">
+import { useRouter } from '$uni-router'
+
+const router = useRouter()
+
+const exampleModel = ref([
+  {
+    icon: 'm-luyou',
+    iconClass: '',
+    text: '路由中间件',
+    desc: '进入此页面将触发实名认证路由中间件演示',
+    route: {
+      path: '/pages/middleware/index',
     },
   },
+])
+function handleInfo(row) {
+  router.navigateTo(row.route)
 }
 </script>
 

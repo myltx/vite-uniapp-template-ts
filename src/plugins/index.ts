@@ -1,5 +1,5 @@
 // import UviewPlus from './uview-plus'
-import UvUI from './uv-ui'
+import UvUI from './uv-ui/index'
 
 export default {
   install(app) {

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import storage from '@/utils/storages'
 import { getSiteConfig } from '@/api/base/index'
-import { primaryColor } from '@/configs/index.js'
+import { primaryColor } from '@/configs/index'
 
 export const useAppStore = defineStore({
   id: 'app',

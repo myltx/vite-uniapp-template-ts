@@ -1,11 +1,11 @@
 import { isH5 } from '@uni-helper/uni-env'
 import { createRouter as _createRouter } from 'uniapp-router-next'
-import { aliasTransformer, resolvePages } from './helper.js'
-import { homePage } from '@/configs/index.js'
+import { aliasTransformer, resolvePages } from './helper'
+import { homePage } from '@/configs/index'
 
 export { useRouter, useRoute } from 'uniapp-router-next'
 
-export * from './helper.js'
+export * from './helper'
 
 export function createRouter({ pages, addRoutes = [], ...options } = {}) {
   const routes = [...resolvePages(pages, { addRoot: true }), ...addRoutes]

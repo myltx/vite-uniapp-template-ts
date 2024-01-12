@@ -1,5 +1,5 @@
-// import request from '@/utils/request/index.js'
-import { mock } from '../base/index.js'
+// import request from '@/utils/request/index'
+import { mock } from '../base/index'
 
 /**
  * 获取手机号

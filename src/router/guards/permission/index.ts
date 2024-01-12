@@ -1,5 +1,5 @@
 // import { useToast } from '@/utils/modals'
-import store from '@/store/index.js'
+import store from '@/store/index'
 
 const homePath = '/pages/index/home/index'
 const loginPath = '/pages/login/phone/index'

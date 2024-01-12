@@ -1,8 +1,8 @@
-import { binaryParser } from './helper.js'
-import request from './uni-network/index.js'
-import store from '@/store/index.js'
-import { responseSuccessCode } from '@/configs/request.js'
-import { useDialog, useToast } from '@/utils/modals/index.js'
+import { binaryParser } from './helper'
+import request from './uni-network/index'
+import store from '@/store/index'
+import { responseSuccessCode } from '@/configs/request'
+import { useDialog, useToast } from '@/utils/modals/index'
 
 async function logout(message) {
   try {

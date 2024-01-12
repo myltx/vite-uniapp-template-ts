@@ -1,6 +1,8 @@
-# vite-uniapp-template
+# vite-uniapp-template-ts
 
-🚀 基于 vitejs 驱动的 uniapp 最佳实践集成模板 [查看演示](https://vite-uniapp-template.netlify.app/)
+🚀 基于 vite 驱动的 uniapp 最佳实践集成模板
+
+<!-- [查看演示](https://vite-uniapp-template.netlify.app/) -->
 
 ## 特点
 
@@ -12,7 +14,11 @@
 - 👇 Z-paging: 内置了高性能且易于使用的业务常用下拉分页组件模块，轻松实现下拉刷新、上拉加载等功能。
 - 💅 Unocss: 使用原子化 CSS 引擎，小程序环境下依然完美支持原子化的 class 命名书写规则。
 - 🎨 UI-libs: 预设了 [uv-ui](https://www.uvui.cn/) 和 [uni-ui](https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html) 两者相辅相成，轻松满足绝大多数业务场景，并支持主题色定制功能。
-- 📝 NoTs: 只使用 JavaScript，在常规业务场景或人员水平差距过大情况下，TypeScript 并不会提升开发体验。
+- ~~📝 NoTs: 只使用 JavaScript，在常规业务场景或人员水平差距过大情况下，TypeScript 并不会提升开发体验。~~
+- 添加TypeScript支持
+- unplugin-auto-import: 按需自动导入 Vite、Webpack、Rspack、Rollup 和 esbuild 的 API。具有 TypeScript 支持。
+- 代码结构为 setup 语法糖模式
+
 
 ## 使用方法
 
@@ -89,7 +95,7 @@ app.config.globalProperties.$assets = useAssets
 > 详细使用请参阅 [uni-network](https://github.com/uni-helper/uni-network)
 
 ```js
-import request from '@/utils/request/index.js'
+import request from '@/utils/request/index'
 
 // GET
 request.get(
@@ -187,7 +193,7 @@ const aliasConfig = {
 > 位于 router/guards 中
 
 ```js
-import store from '@/store/index.js'
+import store from '@/store/index'
 
 const homePath = '/pages/index/index'
 const loginPath = '/pages/login/index'
@@ -268,11 +274,11 @@ const pageConfig = {
 
 定义中间件
 
-> router/guards/index.js 中
+> router/guards/index.ts 中
 
 ```js
 // 使用 defineMiddleware 定义并包装为中间件
-import realname from './realname/index.js'
+import realname from './realname/index'
 import { defineMiddleware } from '$uni-router/middleware'
 
 export default (app, router) => {
@@ -283,10 +289,10 @@ export default (app, router) => {
 
 编写路由中间件代码
 
-> router/guards/realname/index.js 中
+> router/guards/realname/index.ts 中
 
 ```js
-import store from '@/store/index.js'
+import store from '@/store/index'
 import { useDialog, useToast } from '@/utils/modals'
 
 export default (router) => {
@@ -335,6 +341,29 @@ export default (router) => {
 }
 ```
 
+路由跳转
+
+```typescript
+import { useRouter } from '$uni-router'
+
+const router = useRouter()
+router.navigateTo('/');
+```
+### 使用 Script Setup
+改用 Script Setup 写法导入 API
+```typescript
+<script setup>
+import { ref } from 'vue'
+import { onReady } from '@dcloudio/uni-app'
+const title = ref('Hello')
+onReady(() => {
+  console.log('onReady')
+})
+</script>
+
+```
+
+
 ### 主要使用的包
 
 - vitejs
@@ -347,29 +376,10 @@ export default (router) => {
 - z-paging
 - unocss
 - unocss-applet
+- unplugin-auto-import
 
 ### 常见问题
 
 #### 无法正常安装依赖/无法启动
 
 删除 pnpm-lock.yaml / yarn.lock / package-lock.json 文件后重新安装依赖
-
-### 获得帮助
-
-> 因为是开源项目 全靠爱发电 所以支持有限 更新节奏不固定
->
-> 注意：非 BUG 或计划外的需求，有偿处理；至于金额，根据问题难易程度，你觉得帮助了多少，看着给吧（维护这些项目已经耗费了大量精力，还要免费花时间解答问题就说不过去了吧...所以白嫖的一律不通过。）
-
-- issues: [issues](https://github.com/viarotel-org/vite-uniapp-template/issues)
-- email: viarotel@qq.com
-- weixin: viarotel
-- qq: 523469508
-
-### 支持项目
-
-> 如果该项目帮到你的话，可以请我喝杯咖啡，让我更有精神完善该项目 😛
-
-<div style="display:flex;">
-  <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79dcbc40246743e2b6870419e88e0392~tplv-k3u1fbpfcp-watermark.image?" alt="payment-weixin" style="width: 30%;">
-  <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1e5e69b83dd746deade95afd4a6864ec~tplv-k3u1fbpfcp-watermark.image?" alt="payment-alipay" style="width: 30%;">
-</div>

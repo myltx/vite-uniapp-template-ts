@@ -1,5 +1,5 @@
 import { isString } from 'lodash-es'
-import * as dictData from '@/configs/dict/index.js'
+import * as dictData from '@/configs/dict/index'
 
 /**
  * @description 回显数据字典

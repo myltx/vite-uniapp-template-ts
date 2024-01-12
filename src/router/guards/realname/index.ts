@@ -1,4 +1,4 @@
-import store from '@/store/index.js'
+import store from '@/store/index'
 import { useDialog, useToast } from '@/utils/modals'
 
 const realname = (router) => {

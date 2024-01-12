@@ -1,4 +1,4 @@
-import storage from '@/utils/storages/index.js'
+import storage from '@/utils/storages/index'
 
 export function setToken(data) {
   storage.set('token', data)

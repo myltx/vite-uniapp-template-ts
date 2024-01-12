@@ -4,16 +4,11 @@
   </view>
 </template>
 
-<script>
+<script setup lang="ts">
+import { onShow } from '@dcloudio/uni-app'
 import content from '/README.md?raw'
-import { primaryColor } from '@/configs/index.js'
+import { primaryColor } from '@/configs/index'
 
-export default {
-  data() {
-    return {
-      content,
-      primaryColor,
-    }
-  },
-}
+console.log('onShow--->', onShow)
+console.log('onShow123--->', onShow)
 </script>

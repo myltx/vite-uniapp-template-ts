@@ -2,24 +2,18 @@
   <web-view class="h-full" :src="viewProps.src"></web-view>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      viewProps: {
-        src: '',
-      },
-    }
-  },
-  onLoad(params) {
-    if (params.title) {
-      uni.setNavigationBarTitle({
-        title: params.title,
-      })
-    }
-    this.viewProps = params
-  },
-}
+<script setup lang="ts">
+import { onLoad } from '@dcloudio/uni-app'
+
+const viewProps = ref<any>({ src: '' })
+onLoad((params: any) => {
+  if (params.title) {
+    uni.setNavigationBarTitle({
+      title: params.title,
+    })
+  }
+  viewProps.value = params
+})
 </script>
 
 <style></style>

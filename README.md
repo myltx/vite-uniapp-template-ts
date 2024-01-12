@@ -353,7 +353,8 @@ router.navigateTo('/');
 改用 Script Setup 写法导入 API
 ```typescript
 <script setup>
-import { ref } from 'vue'
+// 已经引入了 unplugin-auto-import 插件，不需要再手动导入 api
+// import { ref } from 'vue'
 import { onReady } from '@dcloudio/uni-app'
 const title = ref('Hello')
 onReady(() => {

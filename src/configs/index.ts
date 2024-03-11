@@ -26,10 +26,10 @@ export const useRemoteMenu = true
 
 // 企业信息
 export const enterpriseInfo = {
-  name: 'Viarotel',
-  wechat: 'viarotel',
-  email: 'viarotel@qq.com',
-  address: '河南省郑州市',
+  name: '',
+  wechat: '',
+  email: 'summmayl@gmail.com',
+  address: '',
 }
 
 // 主页面路径

@@ -3,8 +3,8 @@
   "version": "2.6.1",
   "author": {
     "name": "viarotel",
-    "email": "viarotel@qq.com",
-    "url": "https://viarotel.eu.org/"
+    "email": "summmayl@gmail.com",
+    "url": "https://vite-uniapp-template-ts.myltx.top/#//"
   },
   "scripts": {
     "lint": "pnpm lint:js",

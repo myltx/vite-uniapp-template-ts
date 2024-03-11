@@ -21,9 +21,9 @@
             <via-icon name="fuzhi" class="text-gray-400"></via-icon>
           </view>
         </uv-form-item>
-        <uv-form-item label="微信二维码">
+        <!-- <uv-form-item label="微信二维码">
           <image :src="wechatImage" alt="" class="w-25 h-25" />
-        </uv-form-item>
+        </uv-form-item> -->
       </uv-form>
     </view>
   </view>
@@ -31,7 +31,6 @@
 
 <script setup lang="ts">
 import { enterpriseInfo } from '@/configs/index'
-import wechatImage from '@/assets/image-wechat.png'
 
 const handleCopy = (val) => {
   console.log(val)

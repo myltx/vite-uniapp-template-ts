@@ -25,7 +25,9 @@
 ### 克隆项目
 
 ```shell
-git clone https://github.com/viarotel/vite-uniapp-template.git
+git clone git@github.com:myltx/vite-uniapp-template-ts.git
+# or
+git clone https://github.com/myltx/vite-uniapp-template-ts.git
 ```
 
 ### 安装项目依赖

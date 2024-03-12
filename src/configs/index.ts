@@ -9,10 +9,12 @@ export const primaryColor = '#028d71'
 
 // 项目基础路径
 export const appBasePath = isProduction ? './' : './'
+// 远端文件地址
+export const fileRequestURL = ''
+export const requestFilePath = '/file'
 // 请求地址
 export const requestURL = ''
 export const requestPath = '/api'
-export const requestFilePath = '/file'
 // 是否开启代理
 export const useProxy = isH5
 // 代理路径

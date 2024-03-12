@@ -13,11 +13,10 @@ import {
   proxyPort,
   proxyURL,
   requestFilePath,
-  requestPath,
   useProxy,
 } from './src/configs/devServer'
 
-import { homePage } from './src/configs/index'
+import { homePage, requestURL } from './src/configs/index'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -113,13 +112,21 @@ export default defineConfig({
     cors: true,
     host: true,
     port: proxyPort,
+    https: false,
     proxy: {
       ...(useProxy && proxyURL
         ? {
             [`^${proxyPath}`]: {
-              target: `${proxyURL}${requestPath}`,
+              target: `${requestURL}`,
               changeOrigin: true,
               rewrite: path => path.replace(new RegExp(`^${proxyPath}`), ''),
+              secure: false,
+              bypass(req, res, options: any) {
+                const proxyURL = options.target + options.rewrite(req.url)
+                console.log('proxyURL', proxyURL)
+                req.headers['x-req-proxyURL'] = proxyURL // 设置未生效
+                res.setHeader('x-req-proxyURL', proxyURL) // 设置响应头可以看到
+              },
             },
             // 解决开发环境上传图片无法直接显示的问题
             [`^${requestFilePath}`]: {

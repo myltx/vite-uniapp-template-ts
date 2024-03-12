@@ -58,6 +58,10 @@ export default {
           icon: 'kefu',
           text: '联系我们',
           path: '/pages/contact/index',
+        }, {
+          icon: 'kefu',
+          text: '天气',
+          path: '/pages/contact/weather/index',
         },
       ]
     },

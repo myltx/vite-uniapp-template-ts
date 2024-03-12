@@ -158,6 +158,33 @@ request.query(
   }
 )
 ```
+#### 1. 加载远端文件涉及到文件以及方法
+
+```typescript
+// src/utils/assets/remote.ts
+// let fileURL = `${getFileBaseURL()}/assets${filePath}`返回地址需要自己根据项目自行调整
+useRemoteAssets()
+
+// src/configs/request.ts
+// 需要根据具体项目情况自行调整
+getFileBaseURL()
+
+// src/configs/index.ts  远端文件路径 根据项目情况自行调整
+fileRequestURL
+
+```
+#### 2. request 请求地址修改
+
+```typescript
+// src/configs/index.ts
+export const requestURL = ''
+export const requestPath = '/api'
+// 代理路径
+export const proxyPath = '/proxy'
+
+```
+
+
 
 #### 路由间功能跳转
 
@@ -365,6 +392,7 @@ onReady(() => {
 </script>
 
 ```
+[路由配置](./ROUTER_CONFIG.md)
 
 
 ### 主要使用的包

@@ -1,4 +1,5 @@
 import {
+  fileRequestURL,
   proxyPath,
   requestFilePath,
   requestPath,
@@ -29,7 +30,7 @@ export function getFileBaseURL() {
       : window.location.origin + requestFilePath
   }
   else {
-    tempURL = requestURL + requestFilePath
+    tempURL = fileRequestURL + requestFilePath
   }
   return tempURL
 }

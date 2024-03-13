@@ -1,4 +1,4 @@
-import { appName } from '@/configs/index'
+import { VITE_GLOB_APP_NAME } from '@/configs/'
 
 export default {
   data() {
@@ -9,14 +9,14 @@ export default {
   },
   onShareAppMessage() {
     return {
-      title: appName,
+      title: VITE_GLOB_APP_NAME,
       path: '/pages/index/index',
       ...this.shareAppMessageProps,
     }
   },
   onShareTimeline() {
     return {
-      title: appName,
+      title: VITE_GLOB_APP_NAME,
       query: '',
       ...this.shareTimelineProps,
     }

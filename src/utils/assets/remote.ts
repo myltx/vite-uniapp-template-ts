@@ -1,7 +1,7 @@
 import { getFileBaseURL } from '../../configs/request'
 
 function useRemoteAssets(filePath, { noCache = false } = {}) {
-  let fileURL = `${getFileBaseURL()}/assets${filePath}`
+  let fileURL = `${getFileBaseURL()}${filePath}`
 
   if (noCache) {
     fileURL += `?t=${new Date().getTime()}`

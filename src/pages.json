@@ -13,14 +13,20 @@
       "aliasPath": "/",
       "style": {
         "navigationBarTitleText": "主页"
-      },
-      "type": "home"
+      }
     },
     {
       "path": "pages/index/example/index",
       "aliasPath": "/example",
       "style": {
         "navigationBarTitleText": "示例"
+      }
+    },
+    {
+      "path": "pages/index/example/request/index",
+      "aliasPath": "/example/request",
+      "style": {
+        "navigationBarTitleText": "请求"
       }
     },
     {

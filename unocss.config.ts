@@ -3,7 +3,7 @@ import transformerDirectives from '@unocss/transformer-directives'
 import { presetApplet, presetRemRpx } from 'unocss-applet'
 import { presetShades } from '@viarotel-org/unocss-preset-shades'
 import presetWind from '@unocss/preset-wind'
-import { primaryColor } from './src/configs/index'
+import { VITE_APP_PRIMARY_COLOR } from './src/configs/env'
 
 const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') || false
 
@@ -24,7 +24,7 @@ export default defineConfig({
   presets: [
     preset,
     // @ts-expect-error
-    presetShades(primaryColor),
+    presetShades(VITE_APP_PRIMARY_COLOR),
     presetRemRpx(),
   ],
   transformers: [transformerDirectives()],

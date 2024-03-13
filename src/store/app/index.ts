@@ -1,14 +1,15 @@
 import { defineStore } from 'pinia'
 import storage from '@/utils/storages'
 import { getSiteConfig } from '@/api/base/index'
-import { primaryColor } from '@/configs/index'
+
+import { VITE_APP_PRIMARY_COLOR } from '@/configs/'
 
 export const useAppStore = defineStore({
   id: 'app',
   state() {
     return {
       themeConfig: storage.get('app/themeConfig') || {
-        primaryColor,
+        primaryColor: VITE_APP_PRIMARY_COLOR,
       },
       siteInfo: {},
       systemInfo: {},

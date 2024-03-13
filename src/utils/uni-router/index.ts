@@ -1,7 +1,7 @@
 import { isH5 } from '@uni-helper/uni-env'
 import { createRouter as _createRouter } from 'uniapp-router-next'
 import { aliasTransformer, resolvePages } from './helper'
-import { homePage } from '@/configs/index'
+import { VITE_GLOB_HOME_PAGE } from '@/configs'
 
 export { useRouter, useRoute } from 'uniapp-router-next'
 
@@ -11,7 +11,7 @@ export function createRouter({ pages, addRoutes = [], ...options } = {}) {
   const routes = [...resolvePages(pages, { addRoot: true }), ...addRoutes]
   if (isH5) {
     routes.unshift({
-      ...routes.find(item => item.path.includes(homePage)),
+      ...routes.find(item => item.path.includes(VITE_GLOB_HOME_PAGE)),
       path: '/',
     })
   }

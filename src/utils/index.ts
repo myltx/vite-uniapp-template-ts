@@ -117,3 +117,10 @@ export function getSexText(idCardNo) {
   }
   return '女'
 }
+
+export function getViteEnvConfig(key) {
+  if (import.meta.env[key]) {
+    return ''
+  }
+  return import.meta.env[key]
+}

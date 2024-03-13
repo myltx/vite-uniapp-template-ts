@@ -43,12 +43,13 @@
 
 <script>
 import { version } from '/package.json'
-import { appName, enterpriseInfo } from '@/configs/index'
+import { enterpriseInfo } from '@/configs/index'
+import { VITE_GLOB_APP_NAME } from '@/configs/'
 
 export default {
   data() {
     return {
-      appName,
+      appName: VITE_GLOB_APP_NAME,
       enterpriseInfo,
       version,
       agreed: false,

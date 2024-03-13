@@ -1,42 +1,33 @@
 import path from 'node:path'
-import { defineConfig, loadEnv } from 'vite'
 import useUni from '@dcloudio/vite-plugin-uni'
 import useEslint from 'vite-plugin-eslint'
 import useUnoCSS from 'unocss/vite'
 import useUniPages from '@uni-helper/vite-plugin-uni-pages'
 import AutoImport from 'unplugin-auto-import/vite'
-
 import postcssConfig from './postcss.config.js'
 
 import {
-  proxyPath,
-  proxyPort,
-  requestFilePath,
   useProxy,
 } from './src/configs/server'
 
-import { homePage } from './src/configs/index'
-
 const isDevelopment = process.env.NODE_ENV === 'development'
+const { VITE_APP_PROXY_PATH, VITE_APP_API_URL, VITE_APP_FILE_PATH, VITE_GLOB_HOME_PAGE, VITE_APP_PROXY_PORT } = process.env
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
-
-  const proxyURL = env.VITE_APP_API_URL
+export default () => {
   return {
     server: {
       cors: true,
       host: true,
-      port: proxyPort,
+      port: VITE_APP_PROXY_PORT,
       https: false,
       proxy: {
-        ...(useProxy && proxyURL
+        ...(useProxy && VITE_APP_API_URL
           ? {
-              [`^${proxyPath}`]: {
-                target: `${proxyURL}`,
+              [`^${VITE_APP_PROXY_PATH}`]: {
+                target: `${VITE_APP_API_URL}`,
                 changeOrigin: true,
-                rewrite: path => path.replace(new RegExp(`^${proxyPath}`), ''),
+                rewrite: path => path.replace(new RegExp(`^${VITE_APP_API_URL}`), ''),
                 secure: false,
                 bypass(req, res, options: any) {
                   const proxyURLTruth = options.target + options.rewrite(req.url)
@@ -46,11 +37,11 @@ export default defineConfig(({ mode }) => {
                 },
               },
               // 解决开发环境上传图片无法直接显示的问题
-              [`^${requestFilePath}`]: {
-                target: `${proxyURL}${requestFilePath}`,
+              [`^${VITE_APP_FILE_PATH}`]: {
+                target: `${VITE_APP_API_URL}${VITE_APP_FILE_PATH}`,
                 changeOrigin: true,
                 rewrite: path =>
-                  path.replace(new RegExp(`^${requestFilePath}`), ''),
+                  path.replace(new RegExp(`^${VITE_APP_FILE_PATH}`), ''),
               },
             }
           : {}),
@@ -59,6 +50,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '^@': path.resolve(__dirname, './src/'),
+        '@': path.resolve(__dirname, './src/'),
         '$uni-router': path.resolve(__dirname, './src/utils/uni-router/'),
       },
     },
@@ -82,7 +74,7 @@ export default defineConfig(({ mode }) => {
       useUnoCSS(),
       useUniPages({
         mergePages: false,
-        homePage,
+        homePage: VITE_GLOB_HOME_PAGE,
       }),
       useUni(),
       AutoImport({
@@ -123,4 +115,4 @@ export default defineConfig(({ mode }) => {
       }),
     ],
   }
-})
+}

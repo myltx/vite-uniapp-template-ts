@@ -158,32 +158,50 @@ request.query(
   }
 )
 ```
-#### 1. 加载远端文件涉及到文件以及方法
+#### 加载远端文件涉及到文件以及方法
 
 ```typescript
-// src/utils/assets/remote.ts
-// let fileURL = `${getFileBaseURL()}/assets${filePath}`返回地址需要自己根据项目自行调整
-useRemoteAssets()
-
-// src/configs/request.ts
-// 需要根据具体项目情况自行调整
-getFileBaseURL()
-
-// src/configs/index.ts  远端文件路径 根据项目情况自行调整
-fileRequestURL
+// 在 .env[mode] 文件中对应修改即可  
+VITE_APP_FILE_URL = ''
+VITE_APP_FILE_PATH = ''
+// 其他具体的配置可以查看 .env[mode] 文件
 
 ```
-#### 2. request 请求地址修改
+#### request 请求地址修改
 
 ```typescript
-// src/configs/index.ts
-export const requestURL = ''
-export const requestPath = '/api'
+// 在 .env[mode] 文件中对应修改即可  
+ // 请求地址
+VITE_APP_API_URL = 'https://www.xxx.com'
 // 代理路径
-export const proxyPath = '/proxy'
+ITE_APP_PROXY_PATH = /api
+// 其他具体的配置可以查看 .env[mode] 文件
 
 ```
+#### env 文件类型配置
+```typescript
+// src/vite-env.d.ts
+// 添加对应字段类型即可
+interface ImportMetaEnv {
+  readonly VITE_APP_API_URL: string;
+  readonly VITE_APP_FILE_URL: string;
+  readonly VITE_APP_FILE_PATH: string;
+  readonly VITE_APP_PROXY_PATH: string;
+  readonly VITE_APP_REQUEST_PATH: string;
+  readonly VITE_APP_BASE_PATH: string;
+  readonly VITE_APP_PROXY_PORT: number;
+  readonly VITE_APP_USE_REMOTE_MENU: boolean;
+  readonly VITE_APP_PRIMARY_COLOR: string;
+  readonly VITE_GLOB_APP_NAME: string;
+  readonly VITE_GLOB_HOME_PAGE: string;
+  readonly VITE_APP_USE_ENCRYPT: boolean;
+}
 
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+```
 
 
 #### 路由间功能跳转
@@ -414,3 +432,21 @@ onReady(() => {
 #### 无法正常安装依赖/无法启动
 
 删除 pnpm-lock.yaml / yarn.lock / package-lock.json 文件后重新安装依赖
+
+### Git 贡献提交规范
+
+- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `types` 类型定义文件更改
+  - `wip` 开发中

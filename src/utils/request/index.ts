@@ -23,6 +23,7 @@ async function logout(message) {
 
 export default request({
   onRequest({ url, configs, bodyKey = 'body', queryKey = 'query' } = {}) {
+    console.log(configs, 'configs')
     // 解决什么都不传某些接口会报错的问题
     if (!configs[bodyKey]) {
       configs[bodyKey] = {}

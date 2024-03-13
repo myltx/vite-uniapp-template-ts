@@ -19,8 +19,9 @@ import _showDictLabel from './utils/showDictLabel'
 
 // 为 remote 时使用远程静态资源 常用于小程序
 // 为 local 时使用本地静态资源
-// import { useAssets } from './utils/assets/remote'
-import { useAssets } from './utils/assets/local'
+import { useAssets } from './utils/assets/remote'
+
+// import { useAssets } from './utils/assets/local'
 
 export function createApp() {
   const app = createSSRApp(App)

@@ -1,22 +1,16 @@
+import { VITE_APP_FILE_PATH, VITE_APP_PROXY_PATH, VITE_APP_REQUEST_PATH, isDev } from './env'
 import {
-  fileRequestURL,
-  proxyPath,
-  requestFilePath,
-  requestPath,
-  requestURL,
   useProxy,
 } from './index'
-
-const isDevelopment = process.env.NODE_ENV === 'development'
 
 // 请求基础域名
 export function getBaseURL() {
   let tempURL = ''
   if (useProxy) {
-    tempURL = isDevelopment ? proxyPath : window.location.origin + requestPath
+    tempURL = isDev() ? VITE_APP_PROXY_PATH : window.location.origin + VITE_APP_REQUEST_PATH
   }
   else {
-    tempURL = requestURL() + requestPath
+    tempURL = import.meta.env.VITE_APP_API_URL + VITE_APP_REQUEST_PATH
   }
   return tempURL
 }
@@ -25,12 +19,12 @@ export function getBaseURL() {
 export function getFileBaseURL() {
   let tempURL = ''
   if (useProxy) {
-    tempURL = isDevelopment
-      ? requestFilePath
-      : window.location.origin + requestFilePath
+    tempURL = isDev()
+      ? VITE_APP_FILE_PATH
+      : window.location.origin + VITE_APP_FILE_PATH
   }
   else {
-    tempURL = fileRequestURL() + requestFilePath
+    tempURL = import.meta.env.VITE_APP_FILE_URL + VITE_APP_FILE_PATH
   }
   return tempURL
 }
@@ -42,4 +36,4 @@ export const responseSuccessCode = '20000'
 // 超时时间
 export const timeout = 60 * 1000
 // 是否开启加密
-export { useEncrypt } from './index'
+export { VITE_APP_USE_ENCRYPT } from './env'

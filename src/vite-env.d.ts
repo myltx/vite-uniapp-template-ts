@@ -9,12 +9,15 @@ interface ImportMetaEnv {
   readonly VITE_APP_BASE_PATH: string;
   readonly VITE_APP_PROXY_PORT: number;
   readonly VITE_APP_USE_REMOTE_MENU: boolean;
-  readonly VITE_APP_PRIMARY_COLOR: string;
   readonly VITE_GLOB_APP_NAME: string;
   readonly VITE_GLOB_HOME_PAGE: string;
   readonly VITE_APP_USE_ENCRYPT: boolean;
 }
 
 interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+interface Process {
   readonly env: ImportMetaEnv;
 }

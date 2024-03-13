@@ -1,4 +1,4 @@
-import { VITE_GLOB_APP_NAME } from '@/configs/'
+import { VITE_GLOB_APP_NAME } from '@/configs'
 
 export default {
   data() {

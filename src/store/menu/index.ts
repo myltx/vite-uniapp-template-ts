@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { getRemoteMenu, transformerMenu } from './helpers'
 import { tree2List } from '@/utils/treeSimple'
 import localMenu from '@/configs/menu/index'
-import { VITE_APP_USE_REMOTE_MENU } from '@/configs/'
+import { VITE_APP_USE_REMOTE_MENU } from '@/configs'
 
 export const useMenuStore = defineStore({
   id: 'app-menu',

@@ -10,12 +10,12 @@ export const {
   VITE_APP_USE_REMOTE_MENU,
   VITE_APP_PRIMARY_COLOR,
   VITE_APP_USE_ENCRYPT,
-} = import.meta.env
+} = process.env
 
 export function isDev() {
-  return import.meta.env.MODE === 'development'
+  return process.env.MODE === 'development'
 }
 
 export function isProduction() {
-  return import.meta.env.MODE === 'production'
+  return process.env.MODE === 'production'
 }

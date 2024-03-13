@@ -36,4 +36,4 @@ export const responseSuccessCode = '20000'
 // 超时时间
 export const timeout = 60 * 1000
 // 是否开启加密
-export { VITE_APP_USE_ENCRYPT } from './env'
+export { VITE_APP_USE_ENCRYPT } from './index'

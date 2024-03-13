@@ -44,7 +44,7 @@
 <script>
 import { version } from '/package.json'
 import { enterpriseInfo } from '@/configs/index'
-import { VITE_GLOB_APP_NAME } from '@/configs/'
+import { VITE_GLOB_APP_NAME } from '@/configs'
 
 export default {
   data() {

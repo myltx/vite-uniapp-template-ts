@@ -191,7 +191,6 @@ interface ImportMetaEnv {
   readonly VITE_APP_BASE_PATH: string;
   readonly VITE_APP_PROXY_PORT: number;
   readonly VITE_APP_USE_REMOTE_MENU: boolean;
-  readonly VITE_APP_PRIMARY_COLOR: string;
   readonly VITE_GLOB_APP_NAME: string;
   readonly VITE_GLOB_HOME_PAGE: string;
   readonly VITE_APP_USE_ENCRYPT: boolean;
@@ -450,3 +449,5 @@ onReady(() => {
   - `ci` 持续集成
   - `types` 类型定义文件更改
   - `wip` 开发中
+
+[Git提交添加emoji图标](https://github.com/Byron4j/CookBook/blob/master/Git/gitCookbook/1-Git%E6%8F%90%E4%BA%A4%E6%B7%BB%E5%8A%A0emoji%E5%9B%BE%E6%A0%87.md)

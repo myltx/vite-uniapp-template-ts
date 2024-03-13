@@ -4,17 +4,32 @@ import useEslint from 'vite-plugin-eslint'
 import useUnoCSS from 'unocss/vite'
 import useUniPages from '@uni-helper/vite-plugin-uni-pages'
 import AutoImport from 'unplugin-auto-import/vite'
+import { defineConfig, loadEnv } from 'vite'
 import postcssConfig from './postcss.config.js'
 
-import {
-  useProxy,
-} from './src/configs/server'
+import { useProxy } from './src/configs/server'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
-const { VITE_APP_PROXY_PATH, VITE_APP_API_URL, VITE_APP_FILE_PATH, VITE_GLOB_HOME_PAGE, VITE_APP_PROXY_PORT } = process.env
 
 // https://vitejs.dev/config/
-export default () => {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const {
+    VITE_APP_PROXY_PATH,
+    VITE_APP_API_URL,
+    VITE_APP_FILE_PATH,
+    VITE_GLOB_HOME_PAGE,
+    VITE_APP_PROXY_PORT,
+  } = env
+
+  const viteEnvKeys = Object.keys(env).filter(key => key.startsWith('VITE_'))
+
+  const define = {
+    ...viteEnvKeys.reduce((config, variable) => {
+      config[`process.env.${variable}`] = JSON.stringify(env[variable])
+      return config
+    }, {}),
+  }
   return {
     server: {
       cors: true,
@@ -27,10 +42,12 @@ export default () => {
               [`^${VITE_APP_PROXY_PATH}`]: {
                 target: `${VITE_APP_API_URL}`,
                 changeOrigin: true,
-                rewrite: path => path.replace(new RegExp(`^${VITE_APP_API_URL}`), ''),
+                rewrite: path =>
+                  path.replace(new RegExp(`^${VITE_APP_API_URL}`), ''),
                 secure: false,
                 bypass(req, res, options: any) {
-                  const proxyURLTruth = options.target + options.rewrite(req.url)
+                  const proxyURLTruth
+                    = options.target + options.rewrite(req.url)
                   console.log('proxyURL', proxyURLTruth)
                   req.headers['x-req-proxyURL'] = proxyURLTruth // 设置未生效
                   res.setHeader('x-req-proxyURL', proxyURLTruth) // 设置响应头可以看到
@@ -60,6 +77,9 @@ export default () => {
     },
     build: {
       // minify: false,
+      lib: {
+        formats: ['es'],
+      },
       // TODO 解决 Windows 下开发模式控制台提示崩溃的问题
       ...(isDevelopment
         ? {
@@ -114,5 +134,9 @@ export default () => {
         },
       }),
     ],
+    define: {
+      ...define,
+      'process.env': process.env,
+    },
   }
-}
+})

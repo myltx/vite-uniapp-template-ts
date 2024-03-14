@@ -164,9 +164,17 @@ request.query(
 // 在 .env[mode] 文件中对应修改即可  
 VITE_APP_FILE_URL = ''
 VITE_APP_FILE_PATH = ''
-// 其他具体的配置可以查看 .env[mode] 文件
 
 ```
+
+- 其他具体的配置可以查看 `.env[mode]` 文件
+- [remote](./src/utils/assets/remote.ts) 的 `useAssets` 为加载远端文件方法
+- 已经挂载至全局 使用 `$assets('wx_logo.png')` 即可
+- 为了解决 css 背景图样式使用 远程资源问题 
+- 使用 `setRemoteBg` 即可配置行内背景图样式
+- 具体参数 在 [remote](./src/utils/assets/remote.ts) 中 `setRemoteBg` 方法抽看
+- 已经挂载至全局 使用 `$setRemoteBg('wx_logo.png', {})` 即可
+
 #### request 请求地址修改
 
 ```typescript
@@ -175,10 +183,11 @@ VITE_APP_FILE_PATH = ''
 VITE_APP_API_URL = 'https://www.xxx.com'
 // 代理路径
 ITE_APP_PROXY_PATH = /api
-// 其他具体的配置可以查看 .env[mode] 文件
+
 
 ```
-#### env 文件类型配置
+-  其他具体的配置可以查看 `.env[mode]` 文件
+#### env [文件类型配置](./src/vite-env.d.ts)
 ```typescript
 // src/vite-env.d.ts
 // 添加对应字段类型即可

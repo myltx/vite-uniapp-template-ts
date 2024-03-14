@@ -39,6 +39,24 @@ const exampleModel = ref([
       path: '/pages/middleware/index',
     },
   },
+  {
+    icon: 'dingwei',
+    iconClass: '',
+    text: '请求页面',
+    desc: '进入页面测试request请求',
+    route: {
+      path: '/pages/index/example/request/index',
+    },
+  },
+  {
+    icon: 'qingchu',
+    iconClass: '',
+    text: '远程资源展示',
+    desc: '进入页面查看远程资源加载方法使用',
+    route: {
+      path: '/pages/index/example/remoteResource/index',
+    },
+  },
 ])
 function handleInfo(row) {
   router.navigateTo(row.route)

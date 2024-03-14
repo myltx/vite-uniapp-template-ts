@@ -30,6 +30,13 @@
       }
     },
     {
+      "path": "pages/index/example/remoteResource/index",
+      "aliasPath": "/example/remoteResource",
+      "style": {
+        "navigationBarTitleText": "远程资源展示"
+      }
+    },
+    {
       "path": "pages/index/personal/index",
       "aliasPath": "/personal",
       "style": {

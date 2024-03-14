@@ -27,6 +27,20 @@ export default defineUniPages({
       },
     },
     {
+      path: 'pages/index/example/request/index',
+      aliasPath: '/example/request',
+      style: {
+        navigationBarTitleText: '请求',
+      },
+    },
+    {
+      path: 'pages/index/example/remoteResource/index',
+      aliasPath: '/example/remoteResource',
+      style: {
+        navigationBarTitleText: '远程资源展示',
+      },
+    },
+    {
       path: 'pages/index/personal/index',
       aliasPath: '/personal',
       style: {

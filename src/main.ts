@@ -19,7 +19,7 @@ import _showDictLabel from './utils/showDictLabel'
 
 // 为 remote 时使用远程静态资源 常用于小程序
 // 为 local 时使用本地静态资源
-import { useAssets } from './utils/assets/remote'
+import { setRemoteBg, useAssets } from './utils/assets/remote'
 
 // import { useAssets } from './utils/assets/local'
 
@@ -44,6 +44,8 @@ export function createApp() {
 
   // 静态资源加载工具
   app.config.globalProperties.$assets = useAssets
+  // 远程静态资源配置背景图方法
+  app.config.globalProperties.$setRemoteBg = setRemoteBg
 
   return {
     app,

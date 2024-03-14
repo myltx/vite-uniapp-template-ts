@@ -5,11 +5,10 @@ import {
 
 // 请求基础域名
 export function getBaseURL() {
-  const requestPath = VITE_APP_REQUEST_PATH == '"null"' ? '' : VITE_APP_REQUEST_PATH
-  console.log('requestPath', VITE_APP_REQUEST_PATH)
+  const requestPath = VITE_APP_REQUEST_PATH == '"null"' ? '' : VITE_APP_REQUEST_PATH?.replace(/"/g, '')
   let tempURL = ''
   if (useProxy) {
-    tempURL = isDev() ? VITE_APP_PROXY_PATH : window.location.origin + requestPath
+    tempURL = isDev() ? VITE_APP_PROXY_PATH || '' : window.location.origin + requestPath
   }
   else {
     tempURL = import.meta.env.VITE_APP_API_URL + requestPath
@@ -19,11 +18,11 @@ export function getBaseURL() {
 
 // 文件基础域名
 export function getFileBaseURL() {
-  const filePath = VITE_APP_FILE_PATH == '"null"' ? '' : VITE_APP_FILE_PATH
+  const filePath = VITE_APP_FILE_PATH == '"null"' ? '' : VITE_APP_FILE_PATH?.replace(/"/g, '')
   let tempURL = ''
   if (useProxy) {
     tempURL = isDev()
-      ? VITE_APP_FILE_PATH
+      ? VITE_APP_FILE_PATH || ''
       : window.location.origin + filePath
   }
   else {

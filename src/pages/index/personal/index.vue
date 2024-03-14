@@ -5,7 +5,7 @@
       @click="handleLogin"
     >
       <view class="overflow-hidden rounded-full w-20 h-20">
-        <image :src="$assets('/avatar.gif')" alt="" class="w-full h-full" />
+        <image :src="$assets('avatar.gif')" alt="" class="w-full h-full" />
       </view>
 
       <view class="text-white text-xl ml-4">
@@ -59,8 +59,8 @@ export default {
           text: '联系我们',
           path: '/pages/contact/index',
         }, {
-          icon: 'kefu',
-          text: '天气',
+          icon: 'renzheng',
+          text: '其他',
           path: '/pages/contact/weather/index',
         },
       ]

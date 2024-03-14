@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    123
+    其他内容展示
   </div>
 </template>
 

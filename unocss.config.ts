@@ -3,12 +3,11 @@ import transformerDirectives from '@unocss/transformer-directives'
 import { presetApplet, presetRemRpx } from 'unocss-applet'
 import { presetShades } from '@viarotel-org/unocss-preset-shades'
 import presetWind from '@unocss/preset-wind'
-import { VITE_APP_PRIMARY_COLOR, primaryColor } from './src/configs'
+import { primaryColor } from './src/configs'
 
 const isApplet = process.env?.UNI_PLATFORM?.startsWith('mp-') || false
 
 const preset = isApplet ? presetApplet() : presetWind()
-console.log(VITE_APP_PRIMARY_COLOR, 'VITE_APP_PRIMARY_COLOR')
 export default defineConfig({
   shortcuts: {
     'inset-center':

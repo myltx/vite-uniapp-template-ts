@@ -13,7 +13,8 @@
       "aliasPath": "/",
       "style": {
         "navigationBarTitleText": "主页"
-      }
+      },
+      "type": "home"
     },
     {
       "path": "pages/index/example/index",

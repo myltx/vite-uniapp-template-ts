@@ -83,9 +83,9 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       // minify: false,
-      lib: {
-        formats: ['es'],
-      },
+      // lib: {
+      //   formats: ['es'],
+      // },
       // TODO 解决 Windows 下开发模式控制台提示崩溃的问题
       ...(isDevelopment
         ? {

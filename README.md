@@ -172,7 +172,7 @@ VITE_APP_FILE_PATH = ''
 - 已经挂载至全局 使用 `$assets('wx_logo.png')` 即可
 - 为了解决 css 背景图样式使用 远程资源问题 
 - 使用 `setRemoteBg` 即可配置行内背景图样式
-- 具体参数 在 [remote](./src/utils/assets/remote.ts) 中 `setRemoteBg` 方法抽看
+- 具体参数 在 [remote](./src/utils/assets/remote.ts) 中 `setRemoteBg` 方法查看
 - 已经挂载至全局 使用 `$setRemoteBg('wx_logo.png', {})` 即可
 
 #### request 请求地址修改

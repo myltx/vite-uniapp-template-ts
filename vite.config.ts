@@ -30,6 +30,12 @@ export default defineConfig(({ mode }) => {
       return config
     }, {}),
   }
+  const p = {
+    ...viteEnvKeys.reduce((config, variable) => {
+      config[`${variable}`] = JSON.stringify(env[variable])
+      return config
+    }, {}),
+  }
   return {
     server: {
       cors: true,
@@ -136,7 +142,10 @@ export default defineConfig(({ mode }) => {
     ],
     define: {
       ...define,
-      'process.env': process.env,
+      'process.env': {
+        ...process.env,
+        ...p,
+      },
     },
   }
 })

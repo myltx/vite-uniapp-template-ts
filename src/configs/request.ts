@@ -5,26 +5,29 @@ import {
 
 // 请求基础域名
 export function getBaseURL() {
+  const requestPath = VITE_APP_REQUEST_PATH == '"null"' ? '' : VITE_APP_REQUEST_PATH
+  console.log('requestPath', VITE_APP_REQUEST_PATH)
   let tempURL = ''
   if (useProxy) {
-    tempURL = isDev() ? VITE_APP_PROXY_PATH : window.location.origin + VITE_APP_REQUEST_PATH
+    tempURL = isDev() ? VITE_APP_PROXY_PATH : window.location.origin + requestPath
   }
   else {
-    tempURL = import.meta.env.VITE_APP_API_URL + VITE_APP_REQUEST_PATH
+    tempURL = import.meta.env.VITE_APP_API_URL + requestPath
   }
-  return tempURL
+  return tempURL.replace('', '')
 }
 
 // 文件基础域名
 export function getFileBaseURL() {
+  const filePath = VITE_APP_FILE_PATH == '"null"' ? '' : VITE_APP_FILE_PATH
   let tempURL = ''
   if (useProxy) {
     tempURL = isDev()
       ? VITE_APP_FILE_PATH
-      : window.location.origin + VITE_APP_FILE_PATH
+      : window.location.origin + filePath
   }
   else {
-    tempURL = import.meta.env.VITE_APP_FILE_URL + VITE_APP_FILE_PATH
+    tempURL = import.meta.env.VITE_APP_FILE_URL + filePath
   }
   return tempURL
 }

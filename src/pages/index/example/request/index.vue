@@ -20,13 +20,18 @@ const dailySentenceData = ref<DailySentenceData>({})
 
 handleDailySentence()
 async function handleDailySentence() {
-  const data = await getDailySentence()
-  dailySentenceData.value = data
-  dailySentenceData.value.pictures = [data.picture, data.picture2, data.picture3, data.picture4]
-  setTimeout(() => {
-    show.value = true
-  }, 500)
-  useToast('请求成功')
+  try {
+    const data = await getDailySentence()
+    dailySentenceData.value = data
+    dailySentenceData.value.pictures = [data.picture, data.picture2, data.picture3, data.picture4]
+    setTimeout(() => {
+      show.value = true
+    }, 500)
+    useToast('请求成功')
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
 </script>
 

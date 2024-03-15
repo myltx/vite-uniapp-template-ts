@@ -19,7 +19,9 @@
 - unplugin-auto-import: 按需自动导入 Vite、Webpack、Rspack、Rollup 和 esbuild 的 API。具有 TypeScript 支持。
 - 代码结构为 setup 语法糖模式
 
-
+## 体验地址
+![alt text](gh_8cdc1414225d_430.jpg)
+<!-- [vite-uniapp-template-ts](https://vite-uniapp-template-ts.myltx.top/#/) -->
 ## 使用方法
 
 ### 克隆项目

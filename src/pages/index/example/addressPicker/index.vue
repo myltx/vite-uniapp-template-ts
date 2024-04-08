@@ -10,8 +10,7 @@
         @confirm="confirm"
         @cancel="cancel"
         @close="close"
-      >
-      </AddressSelect>
+      />
 
       <div class="mt-20px"></div>
       <uv-button type="primary" block @click="open">
@@ -34,10 +33,13 @@ import type { OptionsItem } from '@/components/AddressPicker/AddressPicker'
 import { primaryColor } from '@/configs'
 
 const AddressSelectRef = ref()
-const selectVal = ref([])
+const selectVal = ref<string[] | number[]>([])
 const options = ref<OptionsItem[]>([])
 setTimeout(() => {
-  // selectVal.value = ["330000", "331000"];
+  // selectVal.value = ['330000']
+  // selectVal.value = ['330000', '330400']
+  // selectVal.value = ['330000', '330400', '330421']
+  // selectVal.value = ['330000', '330400', '330421', '330421102']
 }, 1000)
 setTimeout(() => {
   options.value = AddressJson as any

@@ -75,23 +75,13 @@ const tabList = ref<TabItem[]>([
 
 const currentTabIndex = ref(0)
 const selectedRows = ref<OptionsItem[]>([])
-const selectedIds = ref<string[] | number[]>([])
 const showColumn = ref<OptionsItem[]>([])
 const isFirstOpen = ref(true)
-// 用于实现 数据双向绑定
-watch(
-  () => props.modelValue,
-  (newVal: string[] | number[]) => {
-    selectedIds.value = newVal || []
-  },
-)
+
 // 监听 options 变化更新展示数据
 watch(
   () => props.options,
   (newVal) => {
-    if (!props.modelValue.length) {
-      tabList.value[0].list = newVal
-    }
     processingTree(newVal)
     transitionChange()
   },
@@ -152,18 +142,19 @@ function cancel() {
 
 function handleItem(item: OptionsItem) {
   const newLevel = item.level - props.startLevel
-  // 这里需要判断一下当前点击的是不是已经选择过了 如果选择过了就不需要再次点击了
-  if (getSelectRowIds().includes(item[props.fieldNames.value])) {
+  const nowLevel = newLevel + 1
+  if (getSelectRowIds().includes(item[props.fieldNames.value] as never)) {
+    spliceLastSelectedData(nowLevel)
+    tabList.value[newLevel].name = props.placeholder
+    selectedRows.value.splice(newLevel)
     return
   }
   // 这里 给 selectedRows 添加选中项
-  if (!selectedIds.value[newLevel]) {
+  if (!getSelectRowIds()[newLevel]) {
     selectedRows.value.push(item)
-    selectedIds.value.push(item[props.fieldNames.value] as never)
   }
   else {
     selectedRows.value[newLevel] = item
-    selectedIds.value[newLevel] = item[props.fieldNames.value]
   }
   tabList.value.forEach((tab) => {
     if (tab.index === newLevel) {
@@ -171,7 +162,6 @@ function handleItem(item: OptionsItem) {
     }
   })
 
-  const nowLevel = newLevel + 1
   // 先判断 是不是传入了 column 如果有 就优先根据 column 控制需要显示的层级
   if (props.column !== -1 && props.column && props.column <= nowLevel) {
     return
@@ -181,6 +171,7 @@ function handleItem(item: OptionsItem) {
   }
   // 这里如果选择了之前的 需要先去掉之前的数据
   spliceLastSelectedData(nowLevel)
+
   if (tabList.value.length === nowLevel) {
     tabList.value.push({
       name: props.placeholder,
@@ -201,7 +192,6 @@ function handleItem(item: OptionsItem) {
 
 function spliceLastSelectedData(nowLevel) {
   tabList.value.splice(nowLevel)
-  selectedIds.value.splice(nowLevel)
   selectedRows.value.splice(nowLevel)
 }
 
@@ -214,11 +204,15 @@ function processingTree(newVal) {
       tabList.value[0].name = item[props.fieldNames.label]
     }
     else {
-      tabList.value.push({
-        name: item[props.fieldNames.label],
-        index,
-        list: findNewData[index - 1]?.children || [],
-      })
+      if (props.column === -1 || props.column - 1 > index) {
+        tabList.value.push({
+          name: item[props.fieldNames.label],
+          index,
+          list: findNewData[index - 1]?.children || [],
+        })
+      }
+    }
+    if (props.column === -1 || props.column - 1 > index) {
       if (index === findNewData.length - 1) {
         tabList.value.push({
           name: props.placeholder,
@@ -236,8 +230,15 @@ function processingTree(newVal) {
 }
 
 function setShowOptions() {
-  showColumn.value = tabList.value[tabList.value.length - 1]?.list || []
-  currentTabIndex.value = tabList.value.length - 1
+  if (props.modelValue.length) {
+    showColumn.value = tabList.value[tabList.value.length - 1]?.list || []
+    currentTabIndex.value = tabList.value.length - 1
+  }
+  else {
+    tabList.value[0].list = props.options
+    showColumn.value = tabList.value[0]?.list || []
+    currentTabIndex.value = 0
+  }
 }
 
 function findDataByCode(dataArray: OptionsItem[], codeArray) {
@@ -263,11 +264,11 @@ function getSelectRows() {
 }
 
 function getSelectRowIds() {
-  return cloneDeep(selectedIds.value)
+  return cloneDeep(getSelectRows().map(item => item.id))
 }
 
 function isSelected(item: OptionsItem) {
-  return selectedIds.value.includes(item[props.fieldNames.value] as never)
+  return getSelectRowIds().includes(item[props.fieldNames.value] as never)
 }
 defineExpose({
   open,
@@ -333,15 +334,13 @@ defineExpose({
                 @click="handleItem(item)"
               >
                 <slot :data="item">
-                  <template>
-                    <div>{{ item[props.fieldNames.label] }}</div>
-                    <uv-icon
-                      v-if="isSelected(item)"
-                      name="checkbox-mark"
-                      :color="props.tabsConfig?.lineColor || '#1aa328'"
-                      size="26"
-                    />
-                  </template>
+                  <div>{{ item[props.fieldNames.label] }}</div>
+                  <uv-icon
+                    v-if="isSelected(item)"
+                    name="checkbox-mark"
+                    :color="props.tabsConfig?.lineColor || '#1aa328'"
+                    size="24"
+                  />
                 </slot>
               </div>
             </template>

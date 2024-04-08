@@ -57,6 +57,15 @@ const exampleModel = ref([
       path: '/pages/index/example/remoteResource/index',
     },
   },
+  {
+    icon: 'qingchu',
+    iconClass: '',
+    text: '地区选择',
+    desc: '进入页面查看地区选择组件使用',
+    route: {
+      path: '/pages/index/example/addressPicker/index',
+    },
+  },
 ])
 function handleInfo(row) {
   router.navigateTo(row.route)

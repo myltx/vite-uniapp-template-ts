@@ -41,6 +41,13 @@ export default defineUniPages({
       },
     },
     {
+      path: 'pages/index/example/addressPicker/index',
+      aliasPath: '/example/addressPicker',
+      style: {
+        navigationBarTitleText: '地区选择',
+      },
+    },
+    {
       path: 'pages/index/personal/index',
       aliasPath: '/personal',
       style: {

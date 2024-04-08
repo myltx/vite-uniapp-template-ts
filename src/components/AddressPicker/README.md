@@ -66,8 +66,6 @@ function close() {
 </script>
 ```
 
-### 功能
-
 ### API
 
 #### Props
@@ -123,7 +121,7 @@ const options = [
 ]
 ```
 
-#### column 示例
+##### column 示例
 
 - :column="2"
 
@@ -133,7 +131,7 @@ const options = [
 
 ![alt text](image-1.png)
 
-### Methods
+#### Methods
 
 | 事件名称        | 说明             | 回调参数 |
 | --------------- | ---------------- | -------- |
@@ -142,7 +140,7 @@ const options = [
 | getSelectRows   | 获取选中数据     | 无       |
 | getSelectRowIds | 获取选中数据 Id  | 无       |
 
-### Events
+#### Events
 
 | 事件名称 | 说明               | 回调参数                  |
 | -------- | ------------------ | ------------------------- |
@@ -151,7 +149,7 @@ const options = [
 | @cancel  | 点击取消按钮触发   | -                         |
 | @close   | 关闭选择器时触发   | -                         |
 
-#### @confirm 回调参数
+##### @confirm 回调参数
 
 ```js
 {
@@ -160,7 +158,7 @@ const options = [
 }
 ```
 
-#### @change 回调参数
+##### @change 回调参数
 
 ```js
 {
@@ -170,7 +168,7 @@ const options = [
 }
 ```
 
-### Slots
+#### Slots
 
 | 名称    | 说明       | 回调参数  |
 | ------- | ---------- | --------- |

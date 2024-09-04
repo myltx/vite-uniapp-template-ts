@@ -2,6 +2,8 @@
 
 🚀 基于 vite 驱动的 uniapp 最佳实践集成模板
 
+在 [vite-uniapp-template](https://github.com/viarotel-org/vite-uniapp-template) 基础上修改为ts版本
+
 <!-- [查看演示](https://vite-uniapp-template.netlify.app/) -->
 
 ## 特点
